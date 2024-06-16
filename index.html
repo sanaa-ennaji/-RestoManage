@@ -6,134 +6,185 @@
 <title>Restaurant Menu</title>
 <style>
 body {
-font-family: Arial, sans-serif;
-margin: 0;
-padding: 0;
-background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 .navbar {
-background-color: #333;
-color: white;
-padding: 1rem;
-display: flex;
-justify-content: space-between;
-align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .navbar .cart {
-cursor: pointer;
+    cursor: pointer;
 }
 .container {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-gap: 1rem;
-padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
 }
 .card {
-background-color: white;
-border: 1px solid #ccc;
-border-radius: 8px;
-overflow: hidden;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .card img {
-width: 100%;
-height: auto;
+    width: 100%;
+    height: auto;
 }
 .card-body {
-padding: 1rem;
+    padding: 1rem;
 }
 .card-title {
-font-size: 1.2rem;
-margin: 0;
+    font-size: 1.2rem;
+    margin: 0;
 }
 .card-description {
-font-size: 0.9rem;
-color: #666;
+    font-size: 0.9rem;
+    color: #666;
 }
 .card-price {
-font-size: 1rem;
-margin: 0.5rem 0;
+    font-size: 1rem;
+    margin: 0.5rem 0;
 }
 .card button {
-padding: 0.5rem 1rem;
-background-color: #28a745;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 .card button:hover {
-background-color: #218838;
+    background-color: #218838;
 }
 .cart-dropdown {
-display: none;
-position: absolute;
-right: 10px;
-top: 60px;
-background-color: white;
-border: 1px solid #ccc;
-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-padding: 1rem;
-width: 300px;
-border-radius: 8px;
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 60px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 300px;
+    border-radius: 8px;
 }
 .cart-dropdown h3 {
-margin-top: 0;
+    margin-top: 0;
+}
+.cart-item {
+    border-bottom: 1px solid #ccc;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cart-item:last-child {
+    border-bottom: none;
 }
 </style>
 </head>
 <body>
 <div class="navbar">
-<h1>Restaurant Menu</h1>
-<div class="cart" onclick="toggleCartDropdown()">🛒 Cart</div>
+    <h1>Restaurant Menu</h1>
+    <div class="cart" onclick="toggleCartDropdown()">🛒 Cart (<span id="cartCount">0</span>)</div>
 </div>
 <div class="container">
-<!-- Card Items -->
-<div class="card">
-<img src="https://via.placeholder.com/250" alt="Dish 1">
-<div class="card-body">
-<h2 class="card-title">Dish 1</h2>
-<p class="card-description">Delicious dish 1 description.</p>
-<p class="card-price">$10.00</p>
-<button onclick="addToCart('Dish 1', 10.00)">Order</button>
-</div>
-</div>
-<div class="card">
-<img src="https://via.placeholder.com/250" alt="Dish 2">
-<div class="card-body">
-<h2 class="card-title">Dish 2</h2>
-<p class="card-description">Delicious dish 2 description.</p>
-<p class="card-price">$12.00</p>
-<button onclick="addToCart('Dish 2', 12.00)">Order</button>
-</div>
-</div>
-<div class="card">
-    <img src="https://via.placeholder.com/250" alt="Dish 2">
-    <div class="card-body">
-    <h2 class="card-title">Dish 2</h2>
-    <p class="card-description">Delicious dish 2 description.</p>
-    <p class="card-price">$12.00</p>
-    <button onclick="addToCart('Dish 2', 12.00)">Order</button>
-    </div>
+    <!-- Card Items -->
+    <div class="card">
+        <img src="https://via.placeholder.com/250" alt="Dish 1">
+        <div class="card-body">
+            <h2 class="card-title">Dish 1</h2>
+            <p class="card-description">Delicious dish 1 description.</p>
+            <p class="card-price">$10.00</p>
+            <button onclick="addToCart('Dish 1', 10.00)">Order</button>
+        </div>
     </div>
     <div class="card">
         <img src="https://via.placeholder.com/250" alt="Dish 2">
         <div class="card-body">
-        <h2 class="card-title">Dish 2</h2>
-        <p class="card-description">Delicious dish 2 description.</p>
-        <p class="card-price">$12.00</p>
-        <button onclick="addToCart('Dish 2', 12.00)">Order</button>
+            <h2 class="card-title">Dish 2</h2>
+            <p class="card-description">Delicious dish 2 description.</p>
+            <p class="card-price">$12.00</p>
+            <button onclick="addToCart('Dish 2', 12.00)">Order</button>
         </div>
-        </div>
-<!-- Repeat similar blocks for 8 more dishes -->
+    </div>
+    <!-- Repeat similar blocks for 8 more dishes -->
 </div>
 <div class="cart-dropdown" id="cartDropdown">
-<h3>Cart</h3>
-<ul id="cartItems"></ul>
-<p>Total: $<span id="cartTotal">0.00</span></p>
+    <h3>Cart</h3>
+    <ul id="cartItems"></ul>
+    <p>Total Items: <span id="totalItems">0</span></p>
+    <p>Total: $<span id="cartTotal">0.00</span></p>
 </div>
 <script>
-// Implementation Partie JS
+let cart = [];
+
+// Load cart from local storage
+function loadCart() {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+        cart = JSON.parse(storedCart);
+        updateCart();
+    }
+}
+
+// Save cart to local storage
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function toggleCartDropdown() {
+    const cartDropdown = document.getElementById('cartDropdown');
+    cartDropdown.style.display = cartDropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+function addToCart(name, price) {
+    const item = cart.find(i => i.name === name);
+    if (item) {
+        item.quantity++;
+    } else {
+        cart.push({ name, price, quantity: 1 });
+    }
+    saveCart();
+    updateCart();
+}
+
+function updateCart() {
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const totalItems = document.getElementById('totalItems');
+    const cartCount = document.getElementById('cartCount');
+    
+    cartItems.innerHTML = '';
+    let total = 0;
+    let itemCount = 0;
+    
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'cart-item';
+        li.textContent = `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`;
+        cartItems.appendChild(li);
+        total += item.price * item.quantity;
+        itemCount += item.quantity;
+    });
+    
+    cartTotal.textContent = total.toFixed(2);
+    totalItems.textContent = itemCount;
+    cartCount.textContent = itemCount;
+}
+
+// Load cart when the page is loaded
+document.addEventListener('DOMContentLoaded', loadCart);
 </script>
 </body>
 </html>
