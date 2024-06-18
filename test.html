@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let myObj = {
+            name : "domenic",
+            age : 56
+        }
+
+         let setobj = JSON.stringify(myObj)
+        localStorage.setItem("myObj" , setobj);
+        console.log(localStorage);
+    //    let getobj = JSON.parse(localStorage.getItem("myObj" ));
+    //    console.log(getobj);
+    </script>
+</body>
+</html>
